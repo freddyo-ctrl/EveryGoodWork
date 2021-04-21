@@ -1,0 +1,800 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+:root {
+    --primary-orange:#eda357;
+    --primary-white: #ffffff;
+
+    --muted-green:   #6eb56b;
+    --muted-blue:    #7eb2db;
+    --muted-orange:  #f4dc77;
+    
+    --accent-green:  #4db748;
+    --accent-blue:   #4c8fcc;
+    --accent-yellow: #f2dc34;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("../fonts/ssp.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("../fonts/ssp-bold.ttf");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("../fonts/ssp-italic.ttf");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Source Sans Pro";
+    src: url("../fonts/ssp-bold-italic.ttf");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Sriracha";
+    src: url("../fonts/sriracha.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.button-primary {
+    padding: 0.5rem;
+    color: black;
+    background-color: var(--muted-orange);
+    text-decoration: none;
+    font-family: 'Sriracha';
+    border-radius: 6px;
+    box-shadow: 1px 2px 0px black;
+    cursor: pointer;
+}
+
+.button-primary:hover {
+    background-color: var(--primary-orange);
+}
+
+.button-static {
+    padding: 0.5rem;
+    color: black;
+    background-color: var(--primary-orange);
+    text-decoration: none;
+    font-family: 'Sriracha';
+    border-radius: 6px;
+    box-shadow: 1px 2px 0px black;
+    cursor: pointer;
+}
+
+.button-dropdown, .button-dropdown-clicked {
+    padding: 0.5rem;
+    color: black;
+    background-color: var(--primary-orange);
+    text-decoration: none;
+    font-family: 'Sriracha';
+    border-radius: 6px;
+    box-shadow: 1px 2px 0px black;
+    cursor: pointer;
+}
+
+.button-dropdown:hover {
+    background-color: var(--muted-orange);
+}
+
+.button-dropdown-clicked {
+    background-color: var(--muted-orange);
+}
+
+.banner {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    padding-bottom: 1.5rem;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.horizontal-centered {
+    display: flex;
+    justify-content: center;
+}
+
+.text-centered {
+    text-align: center;
+}
+
+.line-green, .line-blue {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    height: 10px;
+    width: 100%;
+    border: none;
+}
+
+.line-green {
+    background-color: var(--muted-green);
+}
+
+.line-blue {
+    background-color: var(--muted-blue);
+}
+
+.error-message {
+    color: red;
+}
+
+.no-vertical-margins {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+html {
+    height: 100%;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1em;
+}
+
+body {
+    display: flex;
+    flex-flow: column wrap;
+    margin: 0;
+    min-height: 100%;
+    font-size: 1.15rem;
+}
+
+@media screen and (min-width: 1200px) {
+
+    body {
+        font-size: 1.0rem;
+    }
+
+}
+
+main {
+    flex: 1 0 auto;
+    padding-bottom: 1.5rem;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Sriracha";
+}
+
+nav {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: flex-start;
+    height: 121px;
+    margin-top: 0px;
+    background-color: var(--primary-orange);
+}
+
+nav a {
+    padding: 1rem;
+    font-family: "Sriracha";
+}
+
+nav a:hover {
+    color: var(--muted-orange);
+}
+
+nav .logo {
+    padding-left: 2rem;
+    padding-top: 0.5rem;
+}
+
+nav .navbar-toggler {
+    height: 48px;
+    width: 48px;
+    border-radius: 10px;
+    border-style: double;
+    background-color: var(--muted-orange);
+}
+
+nav .navbar-toggler:hover {
+    background-color: var(--primary-orange);
+}
+
+nav .navbar-toggler .far.fa-bars {
+    font-size: 1.5rem;
+}
+
+nav .navbar-toggler:hover {
+    cursor: pointer;
+}
+
+nav .navbar-collapse {
+	flex: 1 1 100%;
+	max-width: 100%;
+    visibility: hidden;
+    max-height: 0px;
+    transition: max-height 0.4s;
+}
+
+nav .navbar-collapse.open {
+    visibility: visible;
+    max-height: 450px;
+    position: absolute;
+    top: 120px;
+    left: 65%;
+    width: 160px;
+    background-color: var(--primary-orange);
+    border: 2px black solid;
+    z-index: 10; /* Used to be sure that the nav menu dropdown always appears above other content on the page. */
+}
+
+nav .navbar-collapse .navbar-nav {
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+nav .navbar-collapse .navbar-nav, nav .navbar-collapse .dropdown-menu {
+	padding: 0;
+	margin: 0;
+    list-style-type: none;
+}
+
+nav .nav-item a {
+    color: black;
+}
+
+nav .nav-item .nav-link:hover {
+    color: var(--muted-orange);
+}
+
+nav .nav-item .nav-link, nav .nav-item.dropdown .dropdown-link {
+	padding: calc(1em / 1.618) 1em;
+	display: block;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+nav .login-sub-menu {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+nav .navbar-nav.login-sub-menu {
+    font-size: 0.95rem;
+    border-top: 3px solid var(--muted-orange);
+}
+
+@media screen and (min-width: 1024px) {
+
+    nav .navbar-nav.login-sub-menu {
+        border-top: none;
+    }
+}
+
+.sub-menu {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    background-color: var(--muted-green);
+    border: 3px inset var(--muted-orange);
+}
+
+.sub-menu-links {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: -1rem;
+}
+
+
+/* Alladin Assaf */
+/*image div*/
+.giveBack {
+    position: relative;
+}
+.giveBack .form-link {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    z-index: 2;
+}
+
+/* Alladin Assaf */
+/* 3D card flip code start */
+
+@media screen and (min-width: 1024px) {
+    
+    .cards {
+        margin-bottom: 4rem;
+    }  
+}
+
+.card-parent {
+    margin: 20px;
+}
+
+.card-container {
+    box-shadow: 0 0 5px black;
+    height: 250px;
+}
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 350ms ease-in;
+    transform-style: preserve-3d;
+}
+.card-container:hover  .card,
+.card-container:focus  .card {
+    transform: rotateY(.5turn);
+}
+.front-card,
+.back-card {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    padding: 20px;
+    background-color: white;
+} 
+.front-card h2 {
+    font-size: 1.5rem;
+}
+.front-card p {
+    font-size: .7rem;
+}
+
+.back-card {
+    transform: rotateY(.5turn);
+    padding: 15px;
+}
+.back-card p {
+    font-size: .9rem;
+}
+/* 3D card flip code end */
+
+@media screen and (min-width: 380px) {
+    .back-card p {
+        font-size: 1rem;
+    }
+}
+@media screen and (min-width: 576px) {
+    .card-container {
+        box-shadow: 0 0 5px black;
+        height: 250px;
+    }
+    .back-card p {
+        font-size: .8rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    nav .navbar-collapse.open {
+        left: 70%;
+    }
+    
+
+}
+
+@media screen and (min-width: 992px) {
+    .card-container {
+        box-shadow: 0 0 5px black;
+        height: 320px;
+    }
+    
+}
+
+@media screen and (min-width: 1024px) {
+
+    nav {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    nav .navbar-toggler {
+        display: none;
+    }
+
+    nav .navbar-collapse {
+        display: inline-flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-content: center;
+        visibility: visible;
+        max-height: 100%;
+        max-width: 70%;
+    }
+
+    nav .navbar-collapse.open {
+        position: static;
+        border: none;
+    }
+
+    nav .navbar-nav {
+        display: inline-flex;
+    }
+    .card-container {
+        box-shadow: 0 0 5px black;
+        height: 400px;
+    }
+    .back-card p {
+        font-size: 1.2rem;
+    }
+}
+
+main img:not(.banner) {
+    border-radius: 5px;
+    box-shadow: 6px 6px 0px var(--accent-blue);
+}
+
+.content-staff-menu {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.content-staff-menu p {
+    margin-right: 1rem;
+}
+
+.content-staff-menu .button-primary {
+    margin-right: 1rem;
+}
+
+.blog-post {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.post-image {
+    display: flex;
+    justify-content: center;
+}
+
+.post-image img {
+    object-fit: cover;
+}
+
+.post-details {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.post-details h2 {
+    margin-bottom: 0.35rem;
+}
+
+.post-description {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.post-time {
+    margin-top: -1.5rem;
+}
+
+.blog-post-image {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+
+    .blog-post-image {
+        width: 500px;
+        height: 500px;
+    }
+    
+}
+
+@media screen and (min-width: 1024px) {
+
+    .blog-posts-list {
+        justify-content: center;
+    }
+
+    .blog-post {
+        flex-flow: row wrap;
+        height: 320px;
+    }
+
+    .post-details {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 100%;
+        padding-left: 3rem;
+    }
+
+    .post-description {
+        align-items: flex-start;
+    }
+
+    .post-read-more {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+}
+
+/* Alladin Assaf */
+/* Added a media query for 1200 screen width */
+@media screen and (min-width: 1200px) {
+    html {
+        font-size: 1.2em;
+    }
+}
+
+#events-menu-toggle {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-end;
+}
+
+#events-menu-toggle i {
+    padding: 1rem;
+    margin-right: 10px;
+    margin-top: -3px;
+    background-color: var(--muted-orange);
+    font-size: 1.35rem;
+    border: 4px inset var(--muted-green);
+}
+
+#events-menu-toggle i:hover {
+    background-color: var(--primary-orange);
+}
+
+.events {
+    padding-top: 1rem;
+}
+
+.event {
+    font-size: 1.2rem;
+}
+
+.event-name {
+    display: flex;
+    justify-content: center;
+}
+
+.event-name h2 {
+    margin-bottom: 0px;
+    padding-left: 1rem;
+}
+
+.event-name p {
+    display: none;
+}
+
+.event-image img {
+    object-fit: cover;
+    width: 300px;
+    height: 300px;
+}
+
+.event-info {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.event-info .register {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.hidden-mobile {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    
+    .hidden-mobile {
+        display: flex;
+    }
+
+}
+
+.event-description.open {
+    display: flex;
+    flex-flow: column wrap;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    background-color: var(--muted-blue);
+}
+
+.event-description.open p {
+    font-size: 1.2rem;
+}
+
+.event-buttons {
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.event-desktop-staff-buttons {
+    display: none;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+}
+
+.event-mobile-staff-buttons {
+    padding-top: 1rem;
+    font-size: 0.8rem;
+}
+
+@media screen and (min-width: 1024px) {
+    
+    #events-menu-toggle {
+        display: none;
+    }
+
+    .event {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
+
+    .event-name {
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        padding-left: 2rem;
+    }
+
+    .event-name h2 {
+        padding-left: 0px;        
+    }
+
+    .event-name p {
+        display: flex;
+        flex-flow: column wrap;
+        margin-top: 0px;
+    }
+
+    .event-image img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .event-info {
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+
+    .event-info .read-more {
+        display: none;
+    }
+
+    .event-info .register {
+        display: flex;
+    }
+
+    .event-description.open {
+        display: none;
+    }
+
+    .event-desktop-staff-buttons {
+        display: flex;
+    }
+
+    .event-desktop-staff-buttons .button-primary {
+        margin-right: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .event-image img {
+        width: 300px;
+        height: 300px;
+    }
+    
+}
+
+.form-section {
+    flex-flow: column wrap;
+    padding-bottom: 1rem;
+}
+
+.form-section input, .form-section textarea {
+    width: 100%;
+}
+
+.form-section-buttons {
+    justify-content: space-evenly;
+}
+
+.form-section-buttons input {
+    font-size: 1.0rem;
+}
+
+.form-submit-button {
+    font-size: 1.0rem;
+}
+
+footer {
+    font-family: "Source Sans Pro";
+    text-align: center;
+    background-color: var(--primary-orange);
+}
+
+.footer-social-media-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    padding-left: 0px;
+    list-style-type: none;
+}
+
+.footer-social-media-list li {
+    font-size: 2rem;
+}
+
+.footer-social-media-list li a {
+    color: black;
+}
+
+.footer-social-media-list li a:hover {
+    color: var(--muted-orange);
+}
+
+@media screen and (min-width: 1024px) {
+
+    .footer-socials-and-copyright {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    }
+
+    .footer-copyright-message {
+        justify-content: flex-start;
+        width: fit-content;
+        order: -1;
+    }
+
+    /* Add padding to all but the last li in the list, reference: https://www.geeksforgeeks.org/how-to-select-all-children-of-an-element-except-the-last-child-using-css/ */
+    .footer-social-media-list li:not(:last-child) {
+        padding-right: 1rem;
+    }
+
+}
